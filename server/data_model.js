@@ -13,9 +13,14 @@ const pool = new Pool({
 console.log(pool);
 
 console.log('all users')
-pool.query('SELECT * FROM "User";', (error, results) =>{
+pool.query('SELECT * FROM "User";', (error, results) => {
+  if (error) {
+    console.error(error);
+  } else {
     console.log(JSON.stringify(results));
+  }
 });
+
 
 const createBalance = (body) => {
     return new Promise(function (resolve, reject) {

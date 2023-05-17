@@ -36,7 +36,7 @@ app.use(session({
   }
 }))
 
-app.use(express.static(path.join(__dirname + "/public")));
+app.use(express.static(path.join(__dirname + "../client/build")));
 
 // app.use(function (req, res, next) {
 //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -282,6 +282,11 @@ app.get('/get-settlement-in-balance', (req, res, next) => {
     .catch(error => {
       res.status(500).send('Error retrieving users in expense');
     });
+});
+
+// Serve the React app for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
