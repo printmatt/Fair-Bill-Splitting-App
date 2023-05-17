@@ -16,6 +16,8 @@ const pool = new Pool( !process.env.DATABASE_URL ? {
   }
 );
 
+console.log(pool);
+
 const createBalance = (body) => {
     return new Promise(function (resolve, reject) {
         const { title, status } = body
