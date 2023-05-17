@@ -50,7 +50,7 @@ const createUser = (body) => {
         pool.query('SELECT * FROM "User" WHERE "PhoneNumber" = $1;', [phone_number], (error, results) => {
             if (error) {
                 console.log("find user error")
-                console.error('Error executing query:', err);
+                console.error('Error executing query:', error);
                 reject(error);
             }
             console.log(JSON.stringify(results));
