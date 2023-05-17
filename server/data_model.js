@@ -12,6 +12,7 @@ const pool = new Pool({
 
 console.log(pool);
 
+console.log('all users')
 pool.query('SELECT * FROM "User";', (error, results) =>{
     console.log(JSON.stringify(results));
 });
@@ -37,6 +38,7 @@ const createUser = (body) => {
             if (error) {
                 reject(error);
             }
+            console.log('finding user');
             console.log(JSON.stringify(results));
             if (results.rowCount > 0) {
                 reject(new Error('A user with phone number ' + phone_number + ' already exists'));
