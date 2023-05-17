@@ -37,7 +37,7 @@ const createUser = (body) => {
                 reject(error);
             }
             if (results.rowCount > 0) {
-                reject(new Error('A user with that phone number already exists'));
+                reject(new Error('A user with phone number ' + phone_number + ' already exists'));
             } else {
                 pool.query('INSERT INTO "User" ("FirstName", "LastName", "PhoneNumber") VALUES ($1, $2, $3) RETURNING *;', [first_name, last_name, phone_number], (error, results) => {
                     if (error) {
