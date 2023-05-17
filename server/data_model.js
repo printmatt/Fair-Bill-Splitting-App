@@ -2,19 +2,13 @@
 const Pool = require('pg').Pool
 
 
-const pool = new Pool( !process.env.DATABASE_URL ? {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: '5432',
-    port: 5432,
-} : {
-    connectionString: process.env.DATABASE_URL, // This environment variable is automatically set by Heroku
-    ssl: {
-      rejectUnauthorized: false, // Required when connecting to Heroku Postgres
-    }
-  }
-);
+const pool = new Pool({
+    user: process.env.user || 'postgres',
+    host: process.env.host || 'localhost',
+    database: process.env.database || 'postgres',
+    password: process.env.password ||  '5432',
+    port:  process.env.port || 5432,
+});
 
 console.log(pool);
 
