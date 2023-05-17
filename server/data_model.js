@@ -42,6 +42,7 @@ const createUser = (body) => {
             if (error) {
                 reject(error);
             }
+            console.log(JSON.stringify(results));
             if (results.rowCount > 0) {
                 reject(new Error('A user with phone number ' + phone_number + ' already exists'));
             } else {
