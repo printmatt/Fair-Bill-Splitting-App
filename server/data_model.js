@@ -18,6 +18,10 @@ const pool = new Pool( !process.env.DATABASE_URL ? {
 
 console.log(pool);
 
+pool.query('SELECT * FROM "User";', (error, results) =>{
+    console.log(JSON.stringify(results));
+});
+
 const createBalance = (body) => {
     return new Promise(function (resolve, reject) {
         const { title, status } = body
