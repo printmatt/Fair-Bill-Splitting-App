@@ -47,8 +47,9 @@ const createUser = (body) => {
     return new Promise(function (resolve, reject) {
         const { first_name, last_name, phone_number } = body;
         console.log(body);
-        pool.query('SELECT * FROM "User" WHERE "PhoneNumber" = $1', [phone_number], (error, results) => {
+        pool.query('SELECT * FROM "User" WHERE "PhoneNumber" = $1;', [phone_number], (error, results) => {
             if (error) {
+                console.log("find user error")
                 reject(error);
             }
             console.log('finding user');
