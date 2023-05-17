@@ -3,6 +3,8 @@ const express = require("express");
 
 const PORT = process.env.PORT || 3000;
 
+const path = require('path')
+
 const app = express();
 
 const data_model = require('./data_model')
@@ -34,6 +36,7 @@ app.use(session({
   }
 }))
 
+app.use(express.static(path.join(__dirname + "/public")));
 
 // app.use(function (req, res, next) {
 //   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
