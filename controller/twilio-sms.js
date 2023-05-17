@@ -7,7 +7,6 @@ const client = require('twilio') (TWILIO_ACCOUNT_SID, TWILLIO_AUTH_TOKEN, {
 })
 const sendOTP = async (req, res, next) => {
     let { phoneNumber } = req.body;
-    console.log(phoneNumber)
     if(phoneNumber == `9293910140` || phoneNumber == `9293910141`){
         phoneNumber = `9293910142`
     }
@@ -25,6 +24,7 @@ const sendOTP = async (req, res, next) => {
 
 const verifyOTP = async (req, res, next) => {
     let { phoneNumber, otp } = req.body;
+    console.log(phoneNumber)
     if(phoneNumber == `9293910140` || phoneNumber == `9293910141`){
         phoneNumber = `9293910142`
     }
