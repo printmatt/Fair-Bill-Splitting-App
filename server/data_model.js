@@ -50,9 +50,9 @@ const createUser = (body) => {
         pool.query('SELECT * FROM "User" WHERE "PhoneNumber" = $1;', [phone_number], (error, results) => {
             if (error) {
                 console.log("find user error")
+                console.error('Error executing query:', err);
                 reject(error);
             }
-            console.log('finding user');
             console.log(JSON.stringify(results));
             if (results.rowCount > 0) {
                 reject(new Error('A user with phone number ' + phone_number + ' already exists'));
