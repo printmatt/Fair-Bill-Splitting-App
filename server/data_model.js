@@ -1,33 +1,23 @@
 
-// const Pool = require('pg').Pool
+const Pool = require('pg').Pool
 
-
-// const pool = new Pool({
-//     user: process.env.user || 'postgres',
-//     host: process.env.host || 'localhost',
-//     database: process.env.database || 'postgres',
-//     password: process.env.password ||  '5432',
-//     port:  process.env.port || 5432,
-// });
-
-const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+    user: process.env.user || 'postgres',
+    host: process.env.host || 'localhost',
+    database: process.env.database || 'postgres',
+    password: process.env.password ||  '5432',
+    port:  process.env.port || 5432,
 });
-console.log(pool);
 
-console.log('all users')
-pool.query('SELECT * FROM "User";', (error, results) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log(JSON.stringify(results));
-  }
-});
+// const { Pool } = require('pg');
+
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+// });
 
 
 const createBalance = (body) => {
